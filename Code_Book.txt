@@ -45,4 +45,4 @@ tBodyGyroJerkMean
 Addtionally, the first column "subject-no" indicate the no of persons who participate this experients. 
 And, the last column "activity" indicates the activity of participants did.
 
-The complete list of variables of each feature vector is available in 'features.txt'
+The complete list of variables of each feature vector is available in 'clean_data_features.txt'
