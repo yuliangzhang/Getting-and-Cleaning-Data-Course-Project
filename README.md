@@ -24,9 +24,9 @@ My process steps are as followed:
   Labels the data set with descriptive variable names.
 ##Step 7：
   From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject. It includes several sub-steps
-  #1) combine the subject data, measure data, and label data together use 'cbind' command
-  #2) use 'by' command to group and calculate average of each column
-  #3) process the group result and format the data frame structure
-  #4) save the processed result to disk.
+  1) combine the subject data, measure data, and label data together use 'cbind' command
+  2) use 'by' command to group and calculate average of each column
+  3) process the group result and format the data frame structure
+  4) save the processed result to disk.
 
   
