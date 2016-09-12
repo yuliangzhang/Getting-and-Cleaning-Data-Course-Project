@@ -62,26 +62,32 @@ mData <- cbind(mDataSub,selMDataX, mDataY);
 
 stat <- by(mData[,2:80], mData[, c("subject", "activity")], colMeans)
 
-
-## step 2: write data to file
-
-write.table(mData, "./data/UCI HAR Dataset/merge_data.txt")
-
-write.table(stat, "./data/UCI HAR Dataset/average_group_by_activity_and_subject.txt")
-
 arrayData <- as.data.frame.array(stat)
+res <- array(,dim = c(180,81))
+arrayNames <- names(arrayData)
 
-write.table(stat, "./data/UCI HAR Dataset/average_group_by_activity_and_subject.txt", row.name=FALSE)
+for (i in c(1:6)){
+  for(j in c(1:30)){
+    tmp <- arrayData[[i]][[j]]
+    res[(i-1) * 30 + j, 1] = j;
+    res[(i-1) * 30 + j, 81] = arrayNames[i];
+    res[(i-1) * 30 + j, 2:80] = tmp
+  }
+}
 
+cleanData <- as.data.frame(res)
 
+variableNames <- names(arrayData[[1]][[1]])
 
+## Set the names of data frame
+cleanDataNames <- names(cleanData)
+cleanDataNames[1] <- "subject-no";
+cleanDataNames[81] <- "activity"
+cleanDataNames[2:80] <- variableNames;
+names(cleanData) <- cleanDataNames
 
-
-
-
-
-
-
+## write data to file
+write.table(cleanData, "./data/UCI HAR Dataset/average_group_by_activity_and_subject.txt", row.name=FALSE)
 
 
 
